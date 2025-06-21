@@ -1,5 +1,5 @@
-// Change navbar style on scroll
-window.addEventListener('scroll', function () {
+// Scroll event: Change navbar style when scrolled
+window.addEventListener('scroll', () => {
   const navbar = document.getElementById('navbar');
   if (window.scrollY > 50) {
     navbar.classList.add('scrolled');
@@ -8,7 +8,25 @@ window.addEventListener('scroll', function () {
   }
 });
 
-// CTA button action
-document.getElementById('cta-btn').addEventListener('click', () => {
-  alert('Thanks for getting started!');
+// Hamburger menu toggle for mobile view
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('show');
 });
+
+// Close mobile menu when clicking a link
+document.querySelectorAll('#nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('show');
+  });
+});
+
+// CTA button action
+const ctaButton = document.getElementById('cta-btn');
+if (ctaButton) {
+  ctaButton.addEventListener('click', () => {
+    alert('Thank you for getting started!');
+  });
+}
